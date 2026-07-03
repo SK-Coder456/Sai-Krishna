@@ -13,7 +13,8 @@ int main()
     char calcType = '\0';
     char normOpt = '\0';
     double result = 0.0;
-    int roundResult = 0;
+    double roundResult = 0;
+    char exit = '\0';
 
     printf("\nCalculator Program in C\n");
     printf("Select your Calculator type:\n");
@@ -22,9 +23,8 @@ int main()
     printf("Enter your Calculator Type (N or S or C): ");
     scanf(" %c", &calcType);
 
-    switch (calcType)
+    if (calcType == 'N')
     {
-    case 'N':
         printf("\nNormal Calculator\n");
 
         // Normal Calculator
@@ -34,13 +34,13 @@ int main()
 
         // Operator Type Selecting
 
-        printf("Enter your Operator Type (A, S, M, D, P or R): ");
+        printf("Enter your Operator Type (A, S, M, D, P, R, or %): ");
         scanf(" %c", &normOpt);
 
         switch (normOpt)
         {
         case 'A':
-            printf("Enter your first number: ");
+            printf("\nEnter your first number: ");
             scanf("%lf", &firstNum);
 
             printf("Enter your second number: ");
@@ -50,25 +50,112 @@ int main()
             roundResult = round(result);
 
             printf("\nResult: %.3lf", result);
-            printf("\nRound off number: %d", roundResult);
+            printf("\nRound off number: %.0lf", roundResult);
 
             break;
 
-        case 'B':
+        case 'S':
+            printf("\nEnter your first number: ");
+            scanf("%lf", &firstNum);
+
+            printf("Enter your second number: ");
+            scanf("%lf", &secondNum);
+
+            result = firstNum - secondNum;
+            roundResult = round(result);
+
+            printf("\nResult: %.3lf", result);
+            printf("\nRound off number: %.0lf", roundResult);
+
+            break;
+
+        case 'M':
+            printf("\nEnter your first number: ");
+            scanf("%lf", &firstNum);
+
+            printf("Enter your second number: ");
+            scanf("%lf", &secondNum);
+
+            result = firstNum * secondNum;
+            roundResult = round(result);
+
+            printf("\nResult: %.3lf", result);
+            printf("\nRound off number: %.0lf", roundResult);
+
+            break;
+
+        case 'D':
+            printf("\nEnter your first number: ");
+            scanf("%lf", &firstNum);
+
+            printf("Enter your second number: ");
+            scanf("%lf", &secondNum);
+
+            result = firstNum / secondNum;
+            roundResult = round(result);
+
+            printf("\nResult: %.3lf", result);
+            printf("\nRound off number: %.0lf", roundResult);
+
+            break;
+
+        case 'P':
+            printf("\nEnter your first number (Base): ");
+            scanf("%lf", &firstNum);
+
+            printf("Enter your second number (Power): ");
+            scanf("%lf", &secondNum);
+
+            result = pow(firstNum, secondNum);
+            roundResult = round(result);
+
+            printf("\nResult: %.3lf", result);
+            printf("\nRound off number: %.0lf", roundResult);
+
+            break;
+
+        case 'R':
+            printf("\nEnter your number: ");
+            scanf("%lf", &firstNum);
+
+            result = sqrt(firstNum);
+            roundResult = round(result);
+
+            printf("\nResult: %.3lf", result);
+            printf("\nRound off number: %.0lf", roundResult);
+
+            break;
+
+        case '%':
+            // Still Working
+
+            printf("\nEnter your number: ");
+            scanf("%lf", &firstNum);
+
+            result = firstNum / 100;
+            roundResult = round(result);
+
+            printf("\nResult: %.2lf", result);
+            printf("\nRound off number: %.0lf", roundResult);
 
             break;
         }
-
-    case 'S':
-        printf("\nScientific Calculator\n");
-        break;
-    case 'C':
-        printf("\nShape Calculator\n");
-        break;
-    default:
-        printf("\n%c is not a valid calculator type, please choose (N or S or C)", calcType);
-        break;
     }
+    else if (calcType == 'S')
+    {
+        printf("\nScientific Calculator\n");
+    }
+    else if (calcType == 'C')
+    {
+        printf("\nShape Calculator\n");
+    }
+    else
+    {
+        printf("Please enter a valid option (N, S or C)");
+        scanf("%c", &exit);
+    }
+
+    getchar();
 
     return 0;
 }
